@@ -2,13 +2,12 @@ const { gameState } = require ("./gameState.js");
 const { startRound } = require("./startRound.js");
 const { makeGuess } = require("./makeGuess.js");
 const { addPlayer, removeLatestAddedPlayer } = require("./players.js");
+const { gatherResults } = require("./gatherResults.js");
 
 console.log("Welcome to my app");
 
 const playerOne = "Jim";
 const playerTwo = "Jessica";
-
-
 
 const welcomePlayer = (playerName) => {
   console.log(`Hello, welcome to our game ${playerName}`);
@@ -38,6 +37,8 @@ console.log(`The players names are ${gameState.players}`);
 startRound(0)
 
 makeGuess(0,playerOne, 1969)
-makeGuess(0, playerTwo, 1978) 
+makeGuess(0, playerTwo, 1978)
 
-console.log(JSON.stringify(gameState,null,2))
+console.log(JSON.stringify(gameState, undefined, 2));
+const firstRoundResults = gatherResults(0);
+console.log(JSON.stringify(firstRoundResults, undefined, 2));
