@@ -12,14 +12,14 @@ const gatherResults = (roundNumber) => {
         throw new Error(`No results found for roundNumber: ${roundNumber}`)
     }   
 
+    const results = {}
+
     for(let i = 0; i < round.guesses.length; i++) {
         const guess = round.guesses[i]
-        console.log(guess)
+        
+        results[guess.player] = 100
     }
-    return {
-        "Jim": 100,
-        "Jessica": 400,
-    }
+    return results
 }
 
 module.exports = {
