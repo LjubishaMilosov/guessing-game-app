@@ -16,11 +16,17 @@ const gatherResults = (roundNumber) => {
 
     for(let i = 0; i < round.guesses.length; i++) {
         const guess = round.guesses[i]
+
+        const offFromSolution = Math.abs(round.question.answer - guess.guess)
+
+        results[guess.player] = offFromSolution
         
-        results[guess.player] = 100
+        
     }
     return results
 }
+
+
 
 module.exports = {
     gatherResults
