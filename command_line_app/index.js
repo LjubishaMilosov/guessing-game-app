@@ -41,4 +41,11 @@ makeGuess(0, playerTwo, 1978)
 
 console.log(JSON.stringify(gameState, undefined, 2));
 const firstRoundResults = gatherResults(0);
-console.log(JSON.stringify(firstRoundResults, undefined, 2));
+console.log(JSON.stringify(firstRoundResults, undefined, 2))
+
+startRound(1)
+makeGuess(1, playerOne, 850)
+makeGuess(1, playerTwo, 300)
+console.log(JSON.stringify(gameState, undefined, 2));
+const seconsRoundResults = gatherResults(1);
+console.log(JSON.stringify(seconsRoundResults, undefined, 2))
