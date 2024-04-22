@@ -19,7 +19,15 @@ const gatherResults = (roundNumber) => {
 
         const offFromSolution = Math.abs(round.question.answer - guess.guess)
 
-        results[guess.player] = offFromSolution
+        let score = 1 
+        if(round.question.answer === guess.guess) {
+            score = 10
+        } else if(offFromSolution <= 5) {
+            score = 5
+
+        } 
+
+        results[guess.player] = score
         
         
     }
