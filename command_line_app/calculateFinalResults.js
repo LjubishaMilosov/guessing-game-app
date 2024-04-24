@@ -7,8 +7,7 @@ const calculateFinalResults = () => {
 
     gameState.rounds.forEach((round, index) => {
             const  roundResults = gatherResults(index)
-            console.log(roundResults, index)
-
+            
             const playerNames = Object.keys(roundResults)
 
             playerNames.forEach((player) => {

@@ -7,12 +7,12 @@ const { calculateFinalResults } = require("./calculateFinalResults.js");
 const prompts = require('prompts');
 
 
-const gatherPlayerGuess = async () => {
+const gatherPlayerGuess = async (playerName) => {
   const promptInput = await prompts({
   
       type: 'number',
       name: 'guess',
-      message: 'What is your guess?',
+      message: `What is your guess, ${playerName}?`,
     
 })
   return promptInput.guess
@@ -65,31 +65,31 @@ console.log(`The name of the game is ${gameState.gameName}`);
 console.log(`The players names are ${gameState.players}`);
 
 startRound(0)
-const playerOneRoundZeroGuess = await gatherPlayerGuess();
-const playerTwoRoundZeroGuess = await gatherPlayerGuess();
+const playerOneRoundZeroGuess = await gatherPlayerGuess(playerOne);
+const playerTwoRoundZeroGuess = await gatherPlayerGuess(playerTwo);
 makeGuess(0,playerOne, playerOneRoundZeroGuess)
 makeGuess(0, playerTwo, playerTwoRoundZeroGuess)
 const firstRoundResults = gatherResults(0);
-console.log(JSON.stringify(firstRoundResults, undefined, 2))
+console.log("Round Results", JSON.stringify(firstRoundResults, undefined, 2))
 
 startRound(1)
-const playerOneRoundOneGuess = await gatherPlayerGuess();
-const playerTwoRoundOneGuess = await gatherPlayerGuess();
+const playerOneRoundOneGuess = await gatherPlayerGuess(playerOne);
+const playerTwoRoundOneGuess = await gatherPlayerGuess(playerTwo);
 makeGuess(1, playerOne, playerOneRoundOneGuess)
 makeGuess(1, playerTwo, playerTwoRoundOneGuess)
 const seconsRoundResults = gatherResults(1);
-console.log(JSON.stringify(seconsRoundResults, undefined, 2))
+console.log("Round Results", JSON.stringify(seconsRoundResults, undefined, 2))
 
 startRound(2)
-const playerOneRoundTwoGuess = await gatherPlayerGuess();
-const playerTwoRoundTwoGuess = await gatherPlayerGuess();
+const playerOneRoundTwoGuess = await gatherPlayerGuess(playerOne);
+const playerTwoRoundTwoGuess = await gatherPlayerGuess(playerTwo);
 makeGuess(2, playerOne, playerOneRoundTwoGuess)
 makeGuess(2, playerTwo, playerTwoRoundTwoGuess)
 const thirdRoundResults = gatherResults(2);
-console.log(JSON.stringify(thirdRoundResults, undefined, 2))
+console.log("Round Results", JSON.stringify(thirdRoundResults, undefined, 2))
 
 const finalResults = calculateFinalResults()
-console.log(finalResults)
+console.log("\nFinal Results:", finalResults)
 
 }
 
