@@ -4,11 +4,30 @@ const { makeGuess } = require("./makeGuess.js");
 const { addPlayer, removeLatestAddedPlayer } = require("./players.js");
 const { gatherResults } = require("./gatherResults.js");
 const { calculateFinalResults } = require("./calculateFinalResults.js");
+const prompts = require('prompts');
 
-console.log("Welcome to my app");
 
-const playerOne = "Jim";
-const playerTwo = "Jessica";
+const main = async () => {
+
+  console.log("Welcome to my app");
+
+const response = await prompts([
+  {
+    type: 'text',
+    name: 'playerOne',
+    message: 'What is your name, playerOne?',
+  },
+  {
+    type: 'text',
+    name: 'playerTwo',
+    message: 'What is your name, playerTwo?',
+  }
+])
+
+console.log("response from prompt", response)
+
+const playerOne = response.playerOne;
+const playerTwo = response.playerTwo;
 
 const welcomePlayer = (playerName) => {
   console.log(`Hello, welcome to our game ${playerName}`);
@@ -55,3 +74,8 @@ console.log(JSON.stringify(thirdRoundResults, undefined, 2))
 
 const finalResults = calculateFinalResults()
 console.log(finalResults)
+
+}
+
+main()
+
