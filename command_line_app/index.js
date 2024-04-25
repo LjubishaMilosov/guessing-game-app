@@ -65,7 +65,7 @@ console.log(`The copyright year is ${gameState.copyrightYear}`);
 console.log(`The name of the game is ${gameState.gameName}`);
 console.log(`The players names are ${gameState.players}`);
 
-startRound(0)
+await startRound(0)
 const playerOneRoundZeroGuess = await gatherPlayerGuess(playerOne);
 const playerTwoRoundZeroGuess = await gatherPlayerGuess(playerTwo);
 makeGuess(0,playerOne, playerOneRoundZeroGuess)
@@ -73,7 +73,7 @@ makeGuess(0, playerTwo, playerTwoRoundZeroGuess)
 const firstRoundResults = gatherResults(0);
 console.log("Round Results", JSON.stringify(firstRoundResults, undefined, 2))
 
-startRound(1)
+await startRound(1)
 const playerOneRoundOneGuess = await gatherPlayerGuess(playerOne);
 const playerTwoRoundOneGuess = await gatherPlayerGuess(playerTwo);
 makeGuess(1, playerOne, playerOneRoundOneGuess)
@@ -81,7 +81,7 @@ makeGuess(1, playerTwo, playerTwoRoundOneGuess)
 const seconsRoundResults = gatherResults(1);
 console.log("Round Results", JSON.stringify(seconsRoundResults, undefined, 2))
 
-startRound(2)
+await startRound(2)
 const playerOneRoundTwoGuess = await gatherPlayerGuess(playerOne);
 const playerTwoRoundTwoGuess = await gatherPlayerGuess(playerTwo);
 makeGuess(2, playerOne, playerOneRoundTwoGuess)
@@ -94,11 +94,5 @@ console.log("\nFinal Results:", finalResults)
 
 }
 
-//main()
+main()
 
-const anotherWrapperFunction = async () => {
-  const questionFromFiles = await readQuestions()
-  console.log("question from files", questionFromFiles)
-}
-
-anotherWrapperFunction()

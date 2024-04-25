@@ -1,9 +1,10 @@
 const { gameState } = require('./gameState.js')
-const { questions } = require("./questions.js");
+const { readQuestions } = require("./questions.js");
 
-const startRound = (roundNumber) => {
+const startRound = async (roundNumber) => {
     console.log(`\n--- Round ${roundNumber} ---`);
     console.log(`And here's your question!`);
+    const questions = await readQuestions();
     const specificQuestion = questions[roundNumber]
     console.log(specificQuestion.prompt);
   
