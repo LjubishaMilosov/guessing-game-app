@@ -10,7 +10,7 @@ const printNumberAfterOneSecond = (number) => {
 }
     
 
-const main = () => {
+const main = async() => {
     await printNumberAfterOneSecond(3)
     await printNumberAfterOneSecond(2)
     await printNumberAfterOneSecond(1)

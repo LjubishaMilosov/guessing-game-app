@@ -4,6 +4,7 @@ const { makeGuess } = require("./makeGuess.js");
 const { addPlayer, removeLatestAddedPlayer } = require("./players.js");
 const { gatherResults } = require("./gatherResults.js");
 const { calculateFinalResults } = require("./calculateFinalResults.js");
+const { readQuestions } = require("./questions.js");
 const prompts = require('prompts');
 
 
@@ -93,5 +94,11 @@ console.log("\nFinal Results:", finalResults)
 
 }
 
-main()
+//main()
 
+const anotherWrapperFunction = async () => {
+  const questionFromFiles = await readQuestions()
+  console.log("question from files", questionFromFiles)
+}
+
+anotherWrapperFunction()
