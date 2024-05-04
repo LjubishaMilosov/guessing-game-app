@@ -1,6 +1,6 @@
 export const gameState = {
     players: [], 
     guesses: {}, 
-    rounds:[], 
+    rounds: [ ], 
     popints:{},
 }
