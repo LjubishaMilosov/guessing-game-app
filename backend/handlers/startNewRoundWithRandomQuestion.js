@@ -15,7 +15,11 @@ export const startNewRoundWithRandomQuestion = (request, response) => {
         return hasQuestionNotBeenAsked(question)
     })
 
-    
+    if(notYetAskedQuestions.length === 0) {
+        response.status(401).send(gameState)
+        return
+    }
+
     const randomIndex = Math.floor(Math.random() * questions.length)
     
     const newRound = {
