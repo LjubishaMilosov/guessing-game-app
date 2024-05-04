@@ -1,4 +1,5 @@
 import express from "express"
+import morgan from 'morgan'
 import { helloHandler } from "./handlers/hello.js"
 import { stateHandler } from "./handlers/state.js"  
 import { getPlayersHandler } from "./handlers/getPlayers.js"
@@ -7,6 +8,7 @@ import { addPlayerhandler } from "./handlers/addPlayer.js"
 const app = express()
 
 app.use(express.json())   // parsing json on request
+app.use(morgan('dev'))
 
 app.get("/hello", helloHandler)
 app.get("/state", stateHandler)
