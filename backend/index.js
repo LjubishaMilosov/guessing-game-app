@@ -6,6 +6,7 @@ import { getPlayersHandler } from "./handlers/getPlayers.js"
 import { addPlayerhandler } from "./handlers/addPlayer.js"
 import { startNewRoundWithRandomQuestion } from "./handlers/startNewRoundWithRandomQuestion.js"
 import { makeGuessHandler} from "./handlers/makeGuess.js"
+import { getCurrentRoundHandler } from "./handlers/getCurrentRound.js"
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.get("/state", stateHandler)
 app.get("/players", getPlayersHandler)
 app.post("/players", addPlayerhandler)
 app.post("/round/start/randomquestion", startNewRoundWithRandomQuestion)
+app.get("/round/current", getCurrentRoundHandler)
 app.post("/guess", makeGuessHandler)
 
 console.log("Launching app on port 3331")
