@@ -2,6 +2,21 @@ import { response } from "express";
 import { gameState } from "../gameState/index.js";
 import { questions } from "../questions.js"
 
+const getResults = (currentRound, matchingQuestion) =>{
+    const results = []
+
+    const roundGuesses = gameState.guesses[currentRound.id] || []
+    roundGuesses.forEach( (roundGuess) => {
+    results.push({
+        player: roundGuess.player,
+        guess: roundGuess.guess,
+        difference: Math.abs(roundGuess.guess - matchingQuestion.answer),
+        points: 22
+        })
+    })
+        return results
+}
+
 export const getCurrentRoundAnswersHandler = (request, response) => {
     if(gameState.rounds.length === 0){
         response.status(404).send({
@@ -26,20 +41,8 @@ export const getCurrentRoundAnswersHandler = (request, response) => {
     }
     console.log(matchingQuestion)
 
-    const results = []
-
-    const roundGuesses = gameState.guesses[currentRound.id] || []
-    roundGuesses.forEach( (roundGuess) => {
-results.push({
-        player: roundGuess.player,
-        guess: roundGuess.guess,
-        difference: 42,
-        points: 22
-    })
-        })
-
     response.status(200).send({
-        results: results,
+        results: getResults(currentRound, matchingQuestion),
         overallGamePoints: gameState.players
     })
     return
