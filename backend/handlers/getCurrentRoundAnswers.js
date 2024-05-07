@@ -6,7 +6,6 @@ const getPoints = (difference, pointRanges) => {
     pointRanges.sort((a,b) => {
         return a.threshold - b.threshold
     })
-    console.warn(pointRanges)
     
     for(let i = 0; i < pointRanges.length; i ++){
         const pointRange = pointRanges[i]
@@ -55,10 +54,20 @@ export const getCurrentRoundAnswersHandler = (request, response) => {
         )
         return
     }
-    console.log(matchingQuestion)
+    
+    const results = getResults(currentRound, matchingQuestion)
+    
+    results.forEach((result) => {
+        const playerGameState = gameState.players.find( (player) => {
+            return player.name === result.player
+        })
+        if(playerGameState) {
+            playerGameState.points += result.points
+        }
+    })
 
     response.status(200).send({
-        results: getResults(currentRound, matchingQuestion),
+        results: results,
         overallGamePoints: gameState.players
     })
     return
