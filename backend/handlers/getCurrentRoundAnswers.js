@@ -26,15 +26,20 @@ export const getCurrentRoundAnswersHandler = (request, response) => {
     }
     console.log(matchingQuestion)
 
+    const results = []
+
+    const roundGuesses = gameState.guesses[currentRound.id] || []
+    roundGuesses.forEach( (roundGuess) => {
+results.push({
+        player: roundGuess.player,
+        guess: roundGuess.guess,
+        difference: 42,
+        points: 22
+    })
+        })
+
     response.status(200).send({
-        results: [
-            {
-                player: "Rick",
-                guess: 1975,
-                difference: 2,
-                points: 5
-            }
-    ],
+        results: results,
         overallGamePoints: gameState.players
     })
     return
