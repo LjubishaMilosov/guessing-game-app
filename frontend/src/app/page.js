@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { getPlayers } from "../requests/getPlayers.js"
 
 export default function Home() {
 
@@ -12,6 +15,12 @@ export default function Home() {
       points: 0
     }
   ]
+
+
+  getPlayers().then((response) => {
+    console.log("Response from backend", response)
+  })
+
 
   return(
     <div>
