@@ -20,7 +20,7 @@ export default function Home() {
     {
       players.map((player) => {
         return (
-          <p>{player.points}</p>
+          <p>{player.name}</p>
         )
       })
     }
